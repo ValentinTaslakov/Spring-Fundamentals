@@ -1,6 +1,6 @@
 package softuni.bg.model;
 
-import softuni.bg.model.enums.categoryName;
+import softuni.bg.model.enums.RouteCategory;
 
 import javax.persistence.*;
 
@@ -13,11 +13,14 @@ public class Category {
     private long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private categoryName name;
+    @Column(nullable = false, unique = true)
+    private RouteCategory name;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String description;
+
+
+
 
     public Category() {}
 
@@ -30,11 +33,11 @@ public class Category {
         return this;
     }
 
-    public categoryName getName() {
+    public RouteCategory getName() {
         return name;
     }
 
-    public Category setName(categoryName name) {
+    public Category setName(RouteCategory name) {
         this.name = name;
         return this;
     }

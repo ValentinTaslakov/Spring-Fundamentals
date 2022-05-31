@@ -13,7 +13,7 @@ public class Role {
     private long id;
 
     @Enumerated(EnumType.STRING)
-    private RoleName name;
+    private RoleName role;
 
     public Role(){}
 
@@ -26,12 +26,11 @@ public class Role {
         return this;
     }
 
-    public RoleName getName() {
-        return name;
+    public RoleName getRole() {
+        return role;
     }
 
-    public Role setName(RoleName name) {
-        this.name = name;
-        return this;
+    public void setRole(RoleName role) {
+        this.role = role;
     }
 }

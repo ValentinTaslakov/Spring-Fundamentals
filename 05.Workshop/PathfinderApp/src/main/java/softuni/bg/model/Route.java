@@ -3,6 +3,8 @@ package softuni.bg.model;
 import softuni.bg.model.enums.Level;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "routes")
@@ -12,9 +14,17 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column(name = "video_url")
+    private String videoUrl;
+
     @Lob
+    @Column(name = "gpx_coordinates")
     private String gpxCoordinates;
 
+    @Enumerated(EnumType.STRING)
     private Level level;
 
     @Column(nullable = false)
@@ -23,7 +33,20 @@ public class Route {
     @ManyToOne
     private User author;
 
-    public Route() {}
+    @OneToMany(targetEntity = Comment.class, mappedBy = "route", cascade = CascadeType.ALL)
+    private Set<Comment> comments;
+
+    @OneToMany(targetEntity = Picture.class, mappedBy = "route", cascade = CascadeType.ALL)
+    private Set<Picture> pictures;
+
+    @ManyToMany
+    private Set<Category> categories;
+
+    public Route() {
+        this.comments = new HashSet<>();
+        this.pictures = new HashSet<>();
+        this.categories = new HashSet<>();
+    }
 
     public long getId() {
         return id;
@@ -68,5 +91,45 @@ public class Route {
     public Route setAuthor(User author) {
         this.author = author;
         return this;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 }

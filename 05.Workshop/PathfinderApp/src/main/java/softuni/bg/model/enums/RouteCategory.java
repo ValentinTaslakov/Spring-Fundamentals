@@ -1,6 +1,6 @@
 package softuni.bg.model.enums;
 
-public enum categoryName {
+public enum RouteCategory {
 
     PEDESTRIAN,
     BICYCLE,

@@ -17,24 +17,25 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
 
     private int age;
 
-    private String fullname;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Enumerated(EnumType.STRING)
     private Level level;
 
     @ManyToMany
-    private Set<Role> role;
+    private Set<Role> roles;
 
     public User() {
-        this.role = new HashSet<>();
+        this.roles = new HashSet<>();
     }
 
     public long getId() {
@@ -82,12 +83,12 @@ public class User {
         return this;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public User setFullname(String fullname) {
-        this.fullname = fullname;
+    public User setFullName(String fullName) {
+        this.fullName = fullName;
         return this;
     }
 
@@ -100,12 +101,12 @@ public class User {
         return this;
     }
 
-    public Set<Role> getRole() {
-        return role;
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public User setRole(Set<Role> role) {
-        this.role = role;
-        return this;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
