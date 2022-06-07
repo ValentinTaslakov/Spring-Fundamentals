@@ -39,7 +39,7 @@ public class Route {
     @OneToMany(targetEntity = Picture.class, mappedBy = "route", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Picture> pictures;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Category> categories;
 
     public Route() {

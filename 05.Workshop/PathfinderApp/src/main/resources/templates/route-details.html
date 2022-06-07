@@ -91,7 +91,8 @@
         </section>
         <section class="route-description text-center">
             <h4>Description:</h4>
-            <p id="route-description">Description: </p>
+            <p id="route-description"><!--/*@thymesVar id="name" type="templates"*/-->
+            <span th:text="${description.description}"></span></p>
         </section>
         <section class="gallery">
             <img class="rounded" src="/images/pic4.jpg" height="100%" alt="">
