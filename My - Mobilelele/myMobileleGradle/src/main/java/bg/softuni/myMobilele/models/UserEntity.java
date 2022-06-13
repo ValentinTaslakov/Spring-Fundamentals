@@ -9,14 +9,15 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
 
-    @Column(nullable = false)
+    @Column(nullable = false,
+    unique = true)
     private String email;
 
     @Column(nullable = false)
     private String password;
-
+    @Column(nullable = false)
     private String firstName;
-
+    @Column(nullable = false)
     private String lastName;
 
     private Boolean isActive;
@@ -108,6 +109,10 @@ public class UserEntity extends BaseEntity{
 
     public UserEntity setUserRoles(List<UserRoleEntity> userRoles) {
         this.userRoles = userRoles;
+        return this;
+    }
+    public UserEntity addRole(UserRoleEntity userRole) {
+        this.userRoles.add(userRole);
         return this;
     }
 

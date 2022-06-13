@@ -6,7 +6,9 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 @SessionScope
 public class CurrentUser {
-
+//Използваме този потребител само докато е отворена сесията на
+// даден потребител и тук пазим потребителя който се е логнал
+// Пазим логнатия потребител за сега така после ще го променим
     private String name;
     private boolean loggedIn;
 
