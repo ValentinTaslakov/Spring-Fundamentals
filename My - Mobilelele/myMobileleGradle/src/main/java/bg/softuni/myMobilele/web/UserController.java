@@ -35,10 +35,5 @@ public class UserController {
         return "redirect:/";
     }
 
-    @PostMapping("/users/register")
-    public String register(UserRegisterDTO userRegisterDTO) {
-        return "redirect:/";
-    }
 
-    //TODO: Explain POST-redirect-GET
 }

@@ -23,6 +23,7 @@ public class OfferEntity {
     @Type(type = "uuid-char")
     private UUID id;
 
+    @Column(nullable = false)
     private String description;
 
     @Enumerated(EnumType.STRING)

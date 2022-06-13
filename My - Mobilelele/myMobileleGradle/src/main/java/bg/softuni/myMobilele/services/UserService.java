@@ -19,9 +19,7 @@ public class UserService {
     private Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     private UserRepository userRepository;
-
     private CurrentUser currentUser;
-
     private PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository,

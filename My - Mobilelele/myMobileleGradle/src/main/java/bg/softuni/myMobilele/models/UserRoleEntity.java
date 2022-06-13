@@ -1,22 +1,43 @@
 package bg.softuni.myMobilele.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import bg.softuni.myMobilele.models.enums.UserRoleEnum;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
-public class UserRoleEntity extends BaseEntity {
+public class UserRoleEntity  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private UserRoleEnum userRole;
 
-    public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public UserRoleEntity setName(String name) {
-        this.name = name;
+    public UserRoleEntity setId(Long id) {
+        this.id = id;
         return this;
+    }
+
+    public UserRoleEnum getUserRole() {
+        return userRole;
+    }
+
+    public UserRoleEntity setUserRole(UserRoleEnum userRole) {
+        this.userRole = userRole;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRoleEntity{" +
+                "id=" + id +
+                ", userRole=" + userRole +
+                '}';
     }
 }
