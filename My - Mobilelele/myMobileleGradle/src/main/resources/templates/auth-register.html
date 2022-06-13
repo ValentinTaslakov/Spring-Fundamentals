@@ -22,10 +22,14 @@
           th:method="post"
           th:object="${userModel}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+<!--  th:action - посочваме пи коедействие (регистрация на потребител)
+      th:method - при какъв метод (post,get ..)
+      th:object - за кой обект , в случая сме подали нашия атрибут-->
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="firstName" class="text-white font-weight-bold">First Name</label>
                 <input
+
                         id="firstName"
                         th:field="*{firstName}"
                         th:errorclass="is-invalid"
@@ -35,6 +39,12 @@
                 <p class="invalid-feedback errors alert alert-danger">
                     First name is required and should be between 2 and 20 symbols.
                 </p>
+<!-- горе - правим настройки за да се покаже съобщението с необходимите изисквания
+     ако сме въвели първо име което не минава валидация
+     задължителни са :  th:field="*{firstName}" полето ;
+     th:errorclass="is-invalid" типа грешка (когато първото име е невалидно)
+     <p class="invalid-feedback errors alert alert-danger"> - За да се покаже съобщението за необходимите изисквания
+      Това се прави за всички полета в регистрационната форма-->
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="lastName" class="text-white font-weight-bold">Last Name</label>

@@ -14,6 +14,8 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/users")
+//@RequestMapping може да се използва и върху клас, като в случая казваме че всички
+// мапинги ще са от users
 public class UserRegistrationController {
 
     private UserService userService;
@@ -26,6 +28,8 @@ public class UserRegistrationController {
     public UserRegisterDTO initUserModel() {
         return new UserRegisterDTO();
     }
+//    Инициализираме си @ModelAttribute за да можем да си го ползваме в всички методи
+//    този атрибут връща нов празен обект от регистрационната форма на потрбител
 
     @GetMapping("/register")
     public String register() {
@@ -36,12 +40,16 @@ public class UserRegistrationController {
     public String register(@Valid UserRegisterDTO userModel,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes) {
+// Използва се @Valid за да се направят валидациите заложени в ДТО класа, веднага след него
+// (задължително) се използва BindingResult в него се записват резултатите от валидирането
 
         if (bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("userModel", userModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel", bindingResult);
             return "redirect:/users/register";
+            //  RedirectAttributes заедно с горните редове използваме за да запазим грешните
+            //  данни, и така попълнените полета във формата за регистрация не се трият
         }
 
         userService.registerAndLogin(userModel);
