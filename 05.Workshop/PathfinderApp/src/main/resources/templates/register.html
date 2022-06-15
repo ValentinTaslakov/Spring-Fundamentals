@@ -23,8 +23,12 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    action="/"
-                    method="">
+                   th: action="/"
+                   th: method=""
+		  th: object="${}">
+<!--metod показва типа HTTP заявка, а action на кой URL да се изпратят тези данни, 
+	th: object="" обекта който ползваме  и долу за всяко поле трябва да добавим 
+th: field= "*{}" за да покажем на кой елемент от обекта съответстват данните от това поле-->
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
