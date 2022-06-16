@@ -2,50 +2,47 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Pathfinder</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/mobile.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-          crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
+    <th:block th:include="~{/fragments/head}"/>
 </head>
 <body>
+    <header>
+         <th:block th:include="~{/fragments/navbar}"/>
+    </header>
 <main class="p-5 align-content-center bg-blur my-register-div">
     <h1 class="border-bottom">Register</h1>
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                   th: action="/"
-                   th: method=""
-		  th: object="${}">
-<!--metod показва типа HTTP заявка, а action на кой URL да се изпратят тези данни, 
+                   th:action="@{/register}"
+                   th:method="post"
+		           th:object="${userModel}">
+<!--method показва типа HTTP заявка, а action на кой URL да се изпратят тези данни,
 	th: object="" обекта който ползваме  и долу за всяко поле трябва да добавим 
 th: field= "*{}" за да покажем на кой елемент от обекта съответстват данните от това поле-->
                 <div>
                     <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
+                        <label for="inputUsername" class="col-form-label ">
+                            Username</label>
                     </div>
                     <div class="col-auto">
                         <input name="username"
-                               
+                               th:field="*{username}"
+                               th:errorclass="is-invalid"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
                         <small id="usernameError"
-                               class="invalid-feedback bg-danger rounded">Username length must be more than 3 characters</small>
+                               class="invalid-feedback bg-danger rounded">
+                            Username length must be more than 3 characters
+                        </small>
 
                         <small id="usernameUniqueError"
-                               class=" bg-danger rounded">Username is already occupied</small>
+                                class=" bg-danger rounded">
+                                Username is already occupied
+                        </small>
 
                     </div>
                 </div>
@@ -56,13 +53,17 @@ th: field= "*{}" за да покажем на кой елемент от обе
                     </div>
                     <div class="col-auto">
                         <input name="fullname"
+                               th:field="*{fullname}"
+                               th:errorclass="is-invalid"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputFullName"
                                class="form-control"
                                aria-describedby="fullNameHelpInline">
                         <small id="fullNameError"
-                               class="invalid-feedback  form-text bg-danger rounded">Full name length must be more than 3 characters</small>
+                               class="invalid-feedback  form-text bg-danger rounded">
+                                Full name length must be more than 3 characters
+                        </small>
                     </div>
                 </div>
 
@@ -72,13 +73,17 @@ th: field= "*{}" за да покажем на кой елемент от обе
                     </div>
                     <div class="col-auto">
                         <input name="email"
+                               th:field="*{email}"
+                               th:errorclass="is-invalid"
 								required
                                type="email"
                                id="inputEmail"
                                class="form-control"
                                aria-describedby="emailHelpInline">
                         <small id="emailError"
-                               class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>
+                               class="invalid-feedback  form-text bg-danger rounded">
+                                Must be valid email
+                        </small>
                     </div>
                 </div>
                 <div>
@@ -86,14 +91,19 @@ th: field= "*{}" за да покажем на кой елемент от обе
                         <label for="inputAge" class="col-form-label ">Age</label>
                     </div>
                     <div class="col-auto">
-                        <input name="age" required
+                        <input name="age"
+                               th:field="*{age}"
+                               th:errorclass="is-invalid"
+                               required
                                type="number"
                                id="inputAge"
                                class="form-control"
                                min="0" max="90"
                                aria-describedby="ageHelpInline">
                         <small id="ageError"
-                               class="invalid-feedback  form-text bg-danger rounded">Must be valid age</small>
+                               class="invalid-feedback  form-text bg-danger rounded">
+                                Must be valid age
+                        </small>
                     </div>
                 </div>
                 <div>
@@ -102,6 +112,8 @@ th: field= "*{}" за да покажем на кой елемент от обе
                     </div>
                     <div class="col-auto">
                         <input name="password"
+                               th:field="*{password}"
+                               th:errorclass="is-invalid"
                                 required minlength="5" maxlength="20"
                                type="password"
                                id="inputPassword"
@@ -120,6 +132,8 @@ th: field= "*{}" за да покажем на кой елемент от обе
                     </div>
                     <div class="col-auto">
                         <input name="confirmPassword"
+                               th:field="*{confirmPassword}"
+                               th:errorclass="is-invalid"
                                 required minlength="5" maxlength="20"
                                type="password"
                                id="inputConfirmPassword"
@@ -141,11 +155,7 @@ th: field= "*{}" за да покажем на кой елемент от обе
     </div>
 </main>
 <footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
+    <th:block th:include="~{/fragments/footer}"/>
 </footer>
 </body>
 </html>
