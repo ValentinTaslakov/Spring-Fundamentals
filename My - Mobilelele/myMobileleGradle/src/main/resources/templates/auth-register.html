@@ -22,9 +22,9 @@
           th:method="post"
           th:object="${userModel}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
-<!--  th:action - посочваме пи коедействие (регистрация на потребител)
+<!--  th:action - посочваме пи кое действие (регистрация на потребител)
       th:method - при какъв метод (post,get ..)
-      th:object - за кой обект , в случая сме подали нашия атрибут-->
+      th:object - за кой обект , в случая сме подали нашия модел атрибут-->
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="firstName" class="text-white font-weight-bold">First Name</label>
@@ -68,9 +68,12 @@
                        type="text"
                        class="form-control"
                        placeholder="User name"/>
-                <p class="invalid-feedback errors alert alert-danger">
-                    Email is required and should be valid.
-                </p>
+                <div class="invalid-feedback errors alert alert-danger">
+                    <div
+                            th:each="err : ${#fields.errors('email')}"
+                            th:text="${err}"
+                    />
+                </div>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="password" class="text-white font-weight-bold">Password</label>
@@ -87,8 +90,17 @@
         </div>
         <div class="form-group">
             <label for="confirmPassword" class="text-white font-weight-bold">Password</label>
-            <input id="confirmPassword" name="confirmPassword" type="password" min="2" max="20" class="form-control"
-                   placeholder="Password"/>
+            <input
+                    th:field="*{confirmPassword}"
+                    th:errorclass="is-invalid"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    min="2"
+                    max="20"
+                    class="form-control"
+                   placeholder="Password"
+            />
             <p class="errors alert alert-danger">
                 Passwords should match.
             </p>
@@ -97,7 +109,7 @@
         <div class="row">
             <div class="col col-md-4">
                 <div class="button-holder d-flex">
-                    <input type="submit" class="btn btn-info btn-lg" value="Login"/>
+                    <input type="submit" class="btn btn-info btn-lg" value="Register"/>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-package bg.softuni.myMobilele.models;
+package bg.softuni.myMobilele.models.entities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

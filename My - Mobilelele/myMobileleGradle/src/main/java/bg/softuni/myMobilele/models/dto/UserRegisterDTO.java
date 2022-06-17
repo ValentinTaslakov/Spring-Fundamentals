@@ -1,13 +1,24 @@
 package bg.softuni.myMobilele.models.dto;
 
+import bg.softuni.myMobilele.models.validation.FieldMatch;
+import bg.softuni.myMobilele.models.validation.UniqueUserEmail;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
+//понеже анотацията ни  е за клас се изписва над класа и в скобите подаваме
+//полетата от класа които са ни нужни и съобщението което да се изведе при
+// несъответствие в двата елемента
+@FieldMatch(
+        first = "password",
+        second = "confirmPassword",
+        message = "Password do not match."
+)
 public class UserRegisterDTO {
-
-    @NotEmpty
-    @Email
+// съобщенията при некоректен имейл
+    @NotEmpty(message = "User email should be provided.")
+    @Email(message = "User email should be valid.")
+    @UniqueUserEmail(message = "User email should be unique.")
     private String email;
 
     @NotEmpty

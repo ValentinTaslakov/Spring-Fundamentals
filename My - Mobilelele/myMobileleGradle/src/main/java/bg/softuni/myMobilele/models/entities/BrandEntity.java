@@ -1,4 +1,4 @@
-package bg.softuni.myMobilele.models;
+package bg.softuni.myMobilele.models.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "brands")
-public class BrandEntity extends BaseEntity{
+public class BrandEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
