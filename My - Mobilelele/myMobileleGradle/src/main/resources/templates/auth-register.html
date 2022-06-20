@@ -53,7 +53,7 @@
                        th:errorclass="is-invalid"
                        type="text"
                        class="form-control"
-                       placeholder="First name"/>
+                       placeholder="Last name"/>
                 <p class="invalid-feedback errors alert alert-danger">
                     Last name is required and should be between 2 and 20 symbols.
                 </p>
@@ -61,13 +61,13 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="email" class="text-white font-weight-bold">Username</label>
+                <label for="email" class="text-white font-weight-bold">Email</label>
                 <input id="email"
                        th:field="*{email}"
                        th:errorclass="is-invalid"
                        type="text"
                        class="form-control"
-                       placeholder="User name"/>
+                       placeholder="Email"/>
                 <div class="invalid-feedback errors alert alert-danger">
                     <div
                             th:each="err : ${#fields.errors('email')}"
@@ -99,7 +99,7 @@
                     min="2"
                     max="20"
                     class="form-control"
-                   placeholder="Password"
+                   placeholder="Confirm Password"
             />
             <p class="errors alert alert-danger">
                 Passwords should match.

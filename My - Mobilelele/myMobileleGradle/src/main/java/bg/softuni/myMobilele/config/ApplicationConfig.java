@@ -1,5 +1,9 @@
 package bg.softuni.myMobilele.config;
 
+import bg.softuni.myMobilele.models.dto.UserRegisterDTO;
+import bg.softuni.myMobilele.models.entities.UserEntity;
+import bg.softuni.myMobilele.models.mapper.UserMapper;
+import bg.softuni.myMobilele.models.mapper.UserMapperImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,7 +16,15 @@ public class ApplicationConfig {
     public PasswordEncoder passwordEncoder() {
         return new Pbkdf2PasswordEncoder();
     }
+
+    @Bean
+    public UserMapper userMapper() {
+        return new UserMapperImpl() {
+
+        };
+    }
 }
+
 // използвания PasswordEncoder - Pbkdf2 е бавен алгоритъм за криптиране на паролата
 // което не позволява на Brute force атаки(В криптографията атаката с груба сила се състои в това, 
 // че нападателят подава много пароли или пароли с надеждата в крайна сметка да отгатне правилно. 
