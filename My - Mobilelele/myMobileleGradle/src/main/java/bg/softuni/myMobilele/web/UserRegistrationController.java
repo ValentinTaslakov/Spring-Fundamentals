@@ -29,7 +29,7 @@ public class UserRegistrationController {
         return new UserRegisterDTO();
     }
 //    Инициализираме си @ModelAttribute за да можем да си го ползваме в всички методи
-//    този атрибут връща нов празен обект от регистрационната форма на потрбител
+//    този атрибут връща нов празен обект от регистрационната форма на потребител
 
     @GetMapping("/register")
     public String register() {

@@ -9,23 +9,39 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 public class AddOfferDTO {
+
     @NotNull
     @Min(1)
     private Long modelId;
+
     @NotNull
     private EngineType engine;
+
     @NotNull
     @Positive
     private Integer price;
+
     @NotNull
     @Min(1900)
     private Integer year;
+
     @NotEmpty
     private String description;
+
     @NotNull
     private TransmissionEnum transmission;
+
     @NotEmpty
     private String imageUrl;
+
+    public TransmissionEnum getTransmission() {
+        return transmission;
+    }
+
+    public AddOfferDTO setTransmission(TransmissionEnum transmission) {
+        this.transmission = transmission;
+        return this;
+    }
 
     public Long getModelId() {
         return modelId;

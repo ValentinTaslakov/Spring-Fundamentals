@@ -23,6 +23,9 @@ public class UserController {
         this.userService = userService;
     }
 
+    //Тук този модел ще ни трябва за всички методи,
+//инициализираме го в отделен метод с тази анотация
+// и той се добавя към всички методи
     @ModelAttribute("userModel")
     public UserLoginDTO initUserModel() {
         return new UserLoginDTO();
@@ -43,7 +46,10 @@ public class UserController {
     public String login(@Valid UserLoginDTO userLoginDTO,
                         BindingResult bindingResult,
                         RedirectAttributes redirectAttributes) {
-
+//проверяваме има ли грешки от валидацията на въведените данни
+// или че потребителя не е логнат, в този сучай използваме
+// redirectAttributes.addFlashAttribute за да запазим въведените данни
+// във формата след като се редиректне формата
         if (bindingResult.hasErrors() || !this.userService.login(userLoginDTO)) {
             redirectAttributes.addFlashAttribute("userModel", userLoginDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel",

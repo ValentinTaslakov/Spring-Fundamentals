@@ -22,7 +22,8 @@
         <span th:if="${@currentUser.isLoggedIn()}"
               th:text="${@currentUser.getName()}">
         </span>
-
+<!--Правим проверка, ако е логнат потребител се извежда името му(горе)
+ако не се показва Anonymous-->
         <span th:if="${@currentUser.isAnonymous()}">
             Anonymous
         </span>

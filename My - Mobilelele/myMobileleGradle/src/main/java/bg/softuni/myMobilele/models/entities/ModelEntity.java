@@ -20,10 +20,10 @@ public class ModelEntity extends BaseEntity {
     private String imageUrl;
 
     @Column(name = "start_year")
-    private int startYear;
+    private Integer startYear;
 
     @Column(name = "end_year")
-    private int endYear;
+    private Integer endYear;
 
     private LocalDateTime created;
 

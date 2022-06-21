@@ -19,7 +19,7 @@ public class BrandService {
   public BrandService(BrandRepository brandRepository) {
     this.brandRepository = brandRepository;
   }
-
+//взимаме всички марки
   public List<BrandDTO> getAllBrands() {
     return brandRepository.
         findAll().
@@ -27,7 +27,7 @@ public class BrandService {
         map(this::mapBrand).
         collect(Collectors.toList());
   }
-
+//към всяка марка добавяме списъка със моделите
   private BrandDTO mapBrand(BrandEntity brandEntity) {
     List<ModelDTO> models = brandEntity.
         getModels().
@@ -39,10 +39,13 @@ public class BrandService {
         setModels(models).
         setName(brandEntity.getName());
   }
-
+//сетваме ид-то и името на модела
   private ModelDTO mapModel(ModelEntity modelEntity) {
     return new ModelDTO().
         setId(modelEntity.getId()).
         setName(modelEntity.getName());
   }
+
+//  правим данните в дто и после използваме дто-то да подадем на Html-ла
+//  който да ги зареди във формата за добавяне на оферти
 }

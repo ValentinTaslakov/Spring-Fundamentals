@@ -37,7 +37,7 @@ public class UserService {
     public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
 // мапваме Дто към ентити
         UserEntity newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
-//  преработваме паролата в хеш
+//  преработваме паролата в хеш, и така я пазим в базата
         newUser.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
 
 
@@ -61,7 +61,7 @@ public class UserService {
 
         boolean success = passwordEncoder.
                 matches(rawPassword, encodedPassword);
-
+//използваме мачването на енкодера за да сравни двете пароли
         if (success) {
             login(userOpt.get());
         } else {
@@ -72,6 +72,9 @@ public class UserService {
     }
 
     private void login(UserEntity userEntity) {
+//  За момента използваме currentUser за да
+//  проследяваме кой потребител е логнат
+//  и тук сетваме данните на логнатия потребител
         currentUser.
                 setLoggedIn(true).
                 setName(userEntity.getFirstName() + " " + userEntity.getLastName()).

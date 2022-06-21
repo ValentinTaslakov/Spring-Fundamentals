@@ -12,8 +12,6 @@ import bg.softuni.myMobilele.user.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class OfferService {
     private OfferRepository offerRepository;
@@ -33,10 +31,6 @@ public class OfferService {
         this.modelRepository = modelRepository;
         this.currentUser = currentUser;
         this.offerMapper = offerMapper;
-    }
-
-    public Optional<OfferEntity> getOffers() {
-        return offerRepository.findById(Long.valueOf(1));
     }
 
     public void addOffer(AddOfferDTO addOfferDTO){

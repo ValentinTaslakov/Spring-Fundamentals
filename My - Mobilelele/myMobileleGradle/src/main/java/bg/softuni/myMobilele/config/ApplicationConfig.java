@@ -1,7 +1,5 @@
 package bg.softuni.myMobilele.config;
 
-import bg.softuni.myMobilele.models.dto.UserRegisterDTO;
-import bg.softuni.myMobilele.models.entities.UserEntity;
 import bg.softuni.myMobilele.models.mapper.UserMapper;
 import bg.softuni.myMobilele.models.mapper.UserMapperImpl;
 import org.springframework.context.annotation.Bean;

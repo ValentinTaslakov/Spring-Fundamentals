@@ -28,14 +28,15 @@ public class OfferController {
     @GetMapping("/offers/all")
     public String allOffers(Model model) {
 
-        Optional<OfferEntity> offer = offerService.getOffers();
-
-        model.addAttribute("offering",offer.get());
         return "offers";
     }
 
     @GetMapping("/offers/add")
     public String addOffer(Model model) {
+//  Използваме тази проверка долу като алтернатива на @ModelAttribute
+//  проверяваме дали модела няма този атрибут и ако го няма го добавяме
+//  По този начин го правим когато няма нужда от @ModelAttribute в
+//  всички методи и така го използваме където е нужен
         if (!model.containsAttribute("addOfferModel")) {
             model.addAttribute("addOfferModel",
                     new AddOfferDTO());

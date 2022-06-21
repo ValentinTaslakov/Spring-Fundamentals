@@ -48,7 +48,8 @@
                         <a class="nav-link" th:href="@{/users/logout}">Logout</a>
                     </div>
                 </li>
-
+<!--Правим проверка горе логнат ли е потребителя и се показва бутона за излизане
+А долу ако не е логнат(анонимен е) се показват бутоните за логване и регистрация-->
                 <li class="nav-item" th:if="${@currentUser.isAnonymous()}">
                     <a class="nav-link" th:href="@{/users/register}">Register</a>
                 </li>
