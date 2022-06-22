@@ -18,7 +18,6 @@ public class ApplicationConfig {
     @Bean
     public UserMapper userMapper() {
         return new UserMapperImpl() {
-
         };
     }
 }
