@@ -12,14 +12,18 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private CategoryEnum name;
 
-    @Lob
+    @Column(columnDefinition = "text")
     private String description;
 
     public CategoryEntity() {}
+
+    public CategoryEntity(CategoryEnum name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

@@ -45,8 +45,11 @@ public class UserRegistrationController {
 
         if (bindingResult.hasErrors()) {
 
-            redirectAttributes.addFlashAttribute("userModel", userModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel", bindingResult);
+            redirectAttributes
+                    .addFlashAttribute("userModel", userModel);
+            redirectAttributes
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userModel"
+                            , bindingResult);
             return "redirect:/users/register";
             //  RedirectAttributes заедно с горните редове използваме за да запазим грешните
             //  данни, и така попълнените полета във формата за регистрация не се трият

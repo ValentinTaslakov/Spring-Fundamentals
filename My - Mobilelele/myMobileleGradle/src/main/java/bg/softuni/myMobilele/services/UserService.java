@@ -75,6 +75,9 @@ public class UserService {
 //  За момента използваме currentUser за да
 //  проследяваме кой потребител е логнат
 //  и тук сетваме данните на логнатия потребител
+//  този логин е private, в първия проверяваме входните данни
+//  дали съответстват на съществуващ потребител в базата и ако
+//  е така подаваме потребителя тук.
         currentUser.
                 setLoggedIn(true).
                 setName(userEntity.getFirstName() + " " + userEntity.getLastName()).

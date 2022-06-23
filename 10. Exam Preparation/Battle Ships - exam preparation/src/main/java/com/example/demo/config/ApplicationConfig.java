@@ -15,11 +15,4 @@ public class ApplicationConfig {
         return new Pbkdf2PasswordEncoder();
     }
 
-    @Bean
-    public UserMapper userMapper() {
-        return new UserMapperImpl() {
-        };
-    }
-
-
 }

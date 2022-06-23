@@ -6,10 +6,7 @@ import com.example.demo.models.validation.UniqueUsername;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @MatchPassword(
         first = "password",
@@ -18,21 +15,24 @@ import javax.validation.constraints.Size;
 )
 public class UserRegisterDto {
 
-    @NotEmpty(message = "Username is required")
+    @NotBlank(message = "Username is required")
     @Size(min = 3, max = 10)
     @UniqueUsername
     private String username;
 
+    @NotBlank
     @Size(min = 5, max = 20)
     private String fullName;
 
     @Email(regexp = "@",message = "User email should be valid.")
     @UniqueUserEmail(message = "User email should be unique.")
-    @NotEmpty(message = "Email is required.")
+    @NotBlank(message = "Email is required.")
     private String email;
 
     @Size(min = 3)
+    @NotBlank
     private String password;
+
 
     private String confirmPassword;
 

@@ -14,33 +14,26 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+            <li class="nav-item" th:if="${@currentUser.isAnonymous()}">
+                <a class="nav-link" th:href="@{/register}">Register</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
+            <li class="nav-item" th:if="${@currentUser.isAnonymous()}">
+                <a class="nav-link" th:href="@{/login}">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ship-add">Add Ship</a>
+            <li class="nav-item" th:if="${@currentUser.isLoggedIn()}">
+                <a class="nav-link" th:href="@{/ship-add}">Add Ship</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/index">Logout</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/ship-add">Add Ship</a>-->
+<!--            </li>-->
             <li class="nav-item" th:if="${@currentUser.isLoggedIn()}">
                 <div class="form-inline my-2 my-lg-0 border px-3">
                     <div class="logged-user"
                          text="Welcome, Gosho"></div>
-                    <a class="nav-link" th:href="@{/users/logout}">Logout</a>
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
                 </div>
             </li>
-            <!--Правим проверка горе логнат ли е потребителя и се показва бутона за излизане
-            А долу ако не е логнат(анонимен е) се показват бутоните за логване и регистрация-->
-            <li class="nav-item" th:if="${@currentUser.isAnonymous()}">
-                <a class="nav-link" th:href="@{/users/register}">Register</a>
-            </li>
-            <li class="nav-item" th:if="${@currentUser.isAnonymous()}">
-                <a class="nav-link" th:href="@{/users/login}">Login</a>
-            </li>
+
         </ul>
         <a class="nav-link" href="/">
             <img width="50px" src="/images/ufo.png" alt="Ufo image">
