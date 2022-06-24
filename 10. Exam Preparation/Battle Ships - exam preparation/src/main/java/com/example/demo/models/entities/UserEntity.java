@@ -24,27 +24,10 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToMany(
-            mappedBy = "user",
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL
-    )
-    private List<ShipEntity> ships;
 
 
-    public UserEntity() {
-        this.ships = new ArrayList<>();
-    }
 
-
-    public List<ShipEntity> getShips() {
-        return ships;
-    }
-
-    public UserEntity setShips(List<ShipEntity> shipEntities) {
-        this.ships = shipEntities;
-        return this;
-    }
+    public UserEntity() {}
 
     public long getId() {
         return id;

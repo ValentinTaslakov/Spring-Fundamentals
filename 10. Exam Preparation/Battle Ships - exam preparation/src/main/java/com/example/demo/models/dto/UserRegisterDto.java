@@ -3,10 +3,10 @@ package com.example.demo.models.dto;
 import com.example.demo.models.validation.MatchPassword;
 import com.example.demo.models.validation.UniqueUserEmail;
 import com.example.demo.models.validation.UniqueUsername;
-import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @MatchPassword(
         first = "password",
@@ -15,22 +15,22 @@ import javax.validation.constraints.*;
 )
 public class UserRegisterDto {
 
-    @NotBlank(message = "Username is required")
+    @NotEmpty(message = "Username is required")
     @Size(min = 3, max = 10)
     @UniqueUsername
     private String username;
 
-    @NotBlank
+    @NotEmpty
     @Size(min = 5, max = 20)
     private String fullName;
 
-    @Email(regexp = "@",message = "User email should be valid.")
+    @Email(message = "User email should be valid.")
     @UniqueUserEmail(message = "User email should be unique.")
-    @NotBlank(message = "Email is required.")
+    @NotEmpty(message = "Email is required.")
     private String email;
 
     @Size(min = 3)
-    @NotBlank
+    @NotEmpty
     private String password;
 
 

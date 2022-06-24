@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -58,6 +58,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
+
         return "login";
     }
 
@@ -73,17 +74,21 @@ public class UserController {
             redirectAttributes
                     .addFlashAttribute("org.springframework.validation.BindingResult.userModel"
                     ,bindingResult);
+            bindingResult
+                    .rejectValue("password","InvalidPasswordError"
+                    , "Invalid password.");
+//            redirectAttributes.addFlashAttribute("badCredentials",true);
 
             return "redirect:/login";
         }
 
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     @GetMapping("/logout")
     public String logout() {
-        userService.logout();
-        return "redirect:/Home";
+        this.userService.logout();
+        return "redirect:/";
     }
 
 }

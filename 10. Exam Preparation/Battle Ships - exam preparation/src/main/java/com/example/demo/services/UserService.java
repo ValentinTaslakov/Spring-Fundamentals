@@ -74,6 +74,10 @@ public class UserService {
                 .setName(userEntity.getFullName());
     }
 
+    public boolean isLoggedIn(){
+        return this.currentUser.isLoggedIn();
+    }
+
     public void logout(){
         currentUser.clear();
     }
