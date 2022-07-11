@@ -17,7 +17,7 @@ public class ShipController {
 
     private final ShipService shipService;
 
-    private final AuthService authService;
+        private final AuthService authService;
 
     public ShipController(ShipService shipService, AuthService authService) {
         this.shipService = shipService;
